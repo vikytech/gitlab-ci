@@ -1,0 +1,56 @@
+span svg{
+  height: 150px;
+  width: 150px;
+}
+
+span .ci-status-icon-success{
+  fill: #33a260;
+}
+
+span .ci-status-icon-failed{
+  fill: #d31a48;
+}
+
+span .ci-status-icon-running svg {
+    fill: #1a97d5;
+}
+
+.project-name {
+  font-size: 50px !important;
+  padding:5px;
+  font-family: fantasy;
+  text-transform: capitalize;
+}
+
+.CI_Build {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    bottom:0;
+    list-style: none;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.CI_Build .project-row {
+    display: flex;
+    flex-flow: column-reverse;
+    position: relative;
+    margin: 5px;
+  border: 5px solid;
+    border-radius: 15px;
+    flex:1 0 20%;
+}
+
+a {
+ text-decoration: none;
+ cursor: default;
+ color: #3777b0;
+}
+
+.CI_Build li .title { align-self: center; flex: 1 1 90%; padding-top: 10px;}
+
+.CI_Build li .controls { align-self: center; flex: 1 1 10%; padding: 50px;}
+
+.navbar, .project-avatar, .page-with-sidebar, .visibility-icon, .avatar-container {display: none;}

@@ -4,13 +4,21 @@
   "name": "GitLab-CI",
   "description": "This is CI monitor gitlab",
   "version": "1.0",
-
   "browser_action": {
     "default_icon": "icon.png",
     "default_popup": "popup.html"
   },
+  "background": {
+    "pages": "popup.html",
+    "css": ["popup.css"],
+    "scripts": ["jquery.js", "popup.js"]
+  },
   "permissions": [
-    "activeTab",
+    "tabs",
+    "http://*/*",
+    "https://*/*",
+    "storage",
     "https://ajax.googleapis.com/"
-  ]
+  ],
+  "web_accessible_resources": ["*.css"]
 }
