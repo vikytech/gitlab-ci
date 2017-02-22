@@ -13,10 +13,15 @@ cleanUpDOM = function() {
   });
 };
 
+resetDOM = function(){
+  $('.CI_Build').remove();
+};
+
 prepareDOM = function(res) {
   var data = $.parseHTML(res);
   $('body').append('<div class="temp"></div>');
   $('.temp').append(data);
+  resetDOM();
   $('body').append('<div class="CI_Build"></div>');
   $('.CI_Build').append($('.ci-status-link').parents('.project-row'));
   if ($('.ci-status-icon-failed').length > 0) {
@@ -39,5 +44,7 @@ renderDashboard = function(res) {
 };
 
 $(document).ready(function() {
-  renderDashboard();
+  setInterval(function() {
+    renderDashboard();
+  }, 30000);
 });
