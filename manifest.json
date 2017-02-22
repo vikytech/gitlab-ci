@@ -4,7 +4,7 @@
   "description": "This is CI monitor gitlab",
   "version": "1.0",
   "browser_action": {
-    "default_icon": "icon.png",
+    "default_icon": "32.png",
     "default_popup": "dashboard.html"
   },
   "background": {
@@ -17,6 +17,12 @@
       "dashboard.js"
     ]
   },
+  "icons": {
+      "128": "128.png",
+      "48": "48.png",
+      "32": "32.png",
+      "16": "16.png"
+   },
   "permissions": [
     "tabs",
     "http://*/*",
