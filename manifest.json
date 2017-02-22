@@ -1,17 +1,21 @@
 {
   "manifest_version": 2,
-
   "name": "GitLab-CI",
   "description": "This is CI monitor gitlab",
   "version": "1.0",
   "browser_action": {
     "default_icon": "icon.png",
-    "default_popup": "popup.html"
+    "default_popup": "dashboard.html"
   },
   "background": {
-    "pages": "popup.html",
-    "css": ["popup.css"],
-    "scripts": ["jquery.js", "popup.js"]
+    "pages": "dashboard.html",
+    "css": [
+      "dashboard.css"
+    ],
+    "scripts": [
+      "jquery.js",
+      "dashboard.js"
+    ]
   },
   "permissions": [
     "tabs",
@@ -20,5 +24,7 @@
     "storage",
     "https://ajax.googleapis.com/"
   ],
-  "web_accessible_resources": ["*.css"]
+  "web_accessible_resources": [
+    "*.css"
+  ]
 }
