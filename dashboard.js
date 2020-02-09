@@ -66,6 +66,7 @@ var renderPipeline = pipelineResponse => {
 };
 
 var renderDashboard = (userInfo, projects) => {
+  $('.projects').empty()
   _.each(projects, project => {
     _.each(project.branches, branch => {
       pipelineParams = {
@@ -104,11 +105,11 @@ var renderDashboard = (userInfo, projects) => {
 };
 
 $(document).ready(() => {
-  // setInterval(function() {
   $.when(getUserInfo(), getProjectInfo()).then((userInfo, repositories) => {
     _.each(repositories[0], repo => {
-      renderDashboard(userInfo[0], repo);
+      setInterval(() => {
+        renderDashboard(userInfo[0], repo);
+        }, 60000);
+      });
     });
-  });
-  // }, 30000);
 });
