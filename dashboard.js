@@ -58,7 +58,7 @@ var renderPipeline = pipelineResponse => {
         '<div class="pipeline-status ' +
         filtered_project.projectStatus +
         '-bg"></div>' +
-        '<div class="branch"><span class="branch-name">' +
+        '<div class="branch"><span class="branch-name"> #' +
         filtered_project.name +
         "</span></div><div class='jobs'></div>"
     );
@@ -68,7 +68,6 @@ var renderPipeline = pipelineResponse => {
 var renderDashboard = (userInfo, projects) => {
   _.each(projects, project => {
     _.each(project.branches, branch => {
-      console.log(branch);
       pipelineParams = {
         ref: branch,
         sort: "desc",

@@ -11,7 +11,7 @@
     border: 1px solid black;
 
     &-status {
-      height: 50px;
+      min-height: 40px;
     }
 
     .branch {
@@ -42,6 +42,7 @@
     .jobs {
       display: flex;
       text-align: center;
+      flex-flow: row wrap;
 
       .job {
         flex: 1 1 auto;

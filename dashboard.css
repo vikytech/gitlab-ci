@@ -22,7 +22,7 @@
 }
 
 .projects .pipeline-status {
-  height: 50px;
+  min-height: 40px;
 }
 
 .projects .pipeline .branch {
@@ -69,6 +69,10 @@
   display: -ms-flexbox;
   display: flex;
   text-align: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
 }
 
 .projects .pipeline .jobs .job {
