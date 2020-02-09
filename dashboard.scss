@@ -1,0 +1,126 @@
+.projects {
+  display: flex;
+  flex-flow: wrap;
+  justify-content: space-around;
+
+  .pipeline {
+    display: flex;
+    flex-flow: column nowrap;
+    width: 350px;
+    height: 200px;
+    border: 1px solid black;
+
+    &-status {
+      height: 50px;
+    }
+
+    .branch {
+      display: flex;
+      flex-flow: column nowrap;
+      text-align: center;
+      flex: 0 1 auto;
+      margin: 15px;
+
+      &-name {
+        font-size: 50px !important;
+        padding: 5px;
+        font-family: fantasy;
+        text-transform: capitalize;
+      }
+
+      &-row {
+        display: flex;
+        flex-flow: column-reverse;
+        position: relative;
+        margin: 5px;
+        border: 5px solid;
+        border-radius: 15px;
+        flex: 1 0 20%;
+      }
+    }
+
+    .jobs {
+      display: flex;
+      text-align: center;
+
+      .job {
+        flex: 1 1 auto;
+
+        &-name {
+          margin: 5px;
+          font-family: fantasy;
+          text-transform: capitalize;
+        }
+
+        // &-status-success {
+        //   color: #33a260;
+        // }
+
+        // &-status-failure {
+        //   color: #d31a48;
+        // }
+
+        // &-status-skipped {
+        //   color: #3d3d3d;
+        // }
+
+        // &-status-running {
+        //   color: #1a97d5;
+        // }
+      }
+    }
+  }
+}
+
+li {
+  .title {
+    align-self: center;
+    flex: 1 1 90%;
+    padding-top: 10px;
+  }
+
+  .controls {
+    align-self: center;
+    flex: 1 1 10%;
+    padding: 50px;
+  }
+
+}
+
+a {
+  text-decoration: none;
+  cursor: default;
+  color: #3777b0;
+}
+
+.success-bg {
+  background: #33a260;
+}
+
+.failed-bg {
+  background: #d31a48;
+}
+
+.running-bg {
+  background: #1a97d5;
+}
+
+.skipped-bg {
+  background: #3d3d3d;
+}
+
+.success-fg {
+  color: #33a260;
+}
+
+.failed-fg {
+  color: #d31a48;
+}
+
+.running-fg {
+  color: #1a97d5;
+}
+
+.skipped-fg {
+  color: #3d3d3d;
+}
