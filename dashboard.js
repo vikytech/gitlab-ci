@@ -29,7 +29,7 @@ var getInfoFromServer = (userInfo, path, params, callback) => {
 };
 
 var renderOpenMRs = mrResponse => {
-  $("#" + mrResponse[0].project_id).text("MRs awaiting aproval: " + mrResponse.length)
+  $("#" + mrResponse[0].project_id).text("MRs awaiting approval: " + mrResponse.length)
 }
 
 var renderJobs = jobs => {
