@@ -2,14 +2,14 @@ var projects;
 var userInfo;
 
 var getProjectInfo = () => {
-  return $.getJSON("http://localhost:3000/projects.json", function(projectsResponse) {
+  return $.getJSON("http://localhost:3000/projects.json", function (projectsResponse) {
     projects = projectsResponse.projects;
     return projectsResponse;
   });
 };
 
 var getUserInfo = () => {
-  return $.getJSON("http://localhost:3000/user_info.json", function(user) {
+  return $.getJSON("http://localhost:3000/user_info.json", function (user) {
     userInfo = user;
     return user;
   });
@@ -22,11 +22,15 @@ var getInfoFromServer = (userInfo, path, params, callback) => {
       "PRIVATE-TOKEN": userInfo.private_token
     },
     type: "GET",
-    success: function(res) {
+    success: function (res) {
       callback(res);
     }
   });
 };
+
+var renderOpenMRs = mrResponse => {
+  $("#" + mrResponse[0].project_id).text("MRs awaiting aproval: " + mrResponse.length)
+}
 
 var renderJobs = jobs => {
   _.each(jobs, job => {
@@ -39,17 +43,18 @@ var renderJobs = jobs => {
     };
     $("#" + filtered_job.pipelineId + "> .jobs").append(
       "<div id=" +
-        filtered_job.jobId +
-        ' class="job"><div class="job-name ' +
-        filtered_job.jobStatus +
-        '-fg"><span>' +
-        filtered_job.jobName +
-        "</span></div></div>"
+      filtered_job.jobId +
+      ' class="job"><div class="job-name ' +
+      filtered_job.jobStatus +
+      '-fg"><span>' +
+      filtered_job.jobName +
+      '</span></div></div>'
     );
   });
 };
 
 var renderPipeline = (projectId, pipelineResponse) => {
+  var filtered_project;
   _.each(pipelineResponse, project => {
     filtered_project = {
       id: project.id,
@@ -58,16 +63,27 @@ var renderPipeline = (projectId, pipelineResponse) => {
     };
     $(".projects").append(
       "<div id=" +
-        filtered_project.id +
-        ' class="pipeline" >' +
-        '<div class="pipeline-status ' +
-        filtered_project.projectStatus +
-        '-bg">'+ _.find(projects, {id: projectId}).name +'</div>' +
-        '<div class="branch"><span class="branch-name"> #' +
-        filtered_project.name +
-        "</span></div><div class='jobs'></div>"
+      filtered_project.id +
+      ' class="pipeline" >' +
+      '<div class="pipeline-status ' +
+      filtered_project.projectStatus +
+      '-bg">' + _.find(projects, { id: projectId }).name + '</div>' +
+      '<div class="branch"><span class="branch-name"> #' +
+      filtered_project.name +
+      '</span><span class="branch-mr-count" id=' + projectId + '></span></div><div class="jobs"><span class=jobs-heading>Jobs status</span></div>'
     );
   });
+
+  mrParams = {
+    state: "opened",
+    wip: "no",
+    target_branch: filtered_project.name
+  };
+
+  getInfoFromServer(userInfo,
+    "projects/" + projectId + "/merge_requests",
+    mrParams, renderOpenMRs);
+
 };
 
 var renderDashboard = (userInfo, projects) => {
@@ -90,10 +106,10 @@ var renderDashboard = (userInfo, projects) => {
         jobs = getInfoFromServer(
           userInfo,
           "projects/" +
-            project.id +
-            "/pipelines/" +
-            pipelineResponse[0].id +
-            "/jobs",
+          project.id +
+          "/pipelines/" +
+          pipelineResponse[0].id +
+          "/jobs",
           jobParams,
           renderJobs
         );
@@ -112,7 +128,7 @@ var renderDashboard = (userInfo, projects) => {
 $(document).ready(() => {
   $.when(getUserInfo(), getProjectInfo()).then((userInfo, repositories) => {
     _.each(repositories[0], repo => {
-        renderDashboard(userInfo[0], repo);
-      });
+      renderDashboard(userInfo[0], repo);
     });
+  });
 });

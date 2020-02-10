@@ -1,4 +1,9 @@
-.projects {
+body {
+  background: #fff8dc;
+  font-family: fantasy;
+}
+
+body .projects {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -8,7 +13,7 @@
       justify-content: space-around;
 }
 
-.projects .pipeline {
+body .projects .pipeline {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -16,17 +21,19 @@
   -webkit-box-direction: normal;
       -ms-flex-flow: column nowrap;
           flex-flow: column nowrap;
-  width: 350px;
+  width: 500px;
   border: 1px solid black;
 }
 
-.projects .pipeline-status {
-  min-height: 40px;
-  font-size: 30px;
+body .projects .pipeline-status {
+  min-height: 50px;
+  font-size: 40px;
   text-align: center;
+  color: white;
+  padding-top: 15px;
 }
 
-.projects .pipeline .branch {
+body .projects .pipeline .branch {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -41,14 +48,17 @@
   margin: 15px;
 }
 
-.projects .pipeline .branch-name {
-  font-size: 50px !important;
+body .projects .pipeline .branch-name {
+  font-size: 30px;
   padding: 5px;
-  font-family: fantasy;
   text-transform: capitalize;
 }
 
-.projects .pipeline .branch-row {
+body .projects .pipeline .branch-mr-count {
+  font-size: 40px;
+}
+
+body .projects .pipeline .branch-row {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -65,7 +75,7 @@
           flex: 1 0 20%;
 }
 
-.projects .pipeline .jobs {
+body .projects .pipeline .jobs {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -76,19 +86,26 @@
           flex-flow: row wrap;
 }
 
-.projects .pipeline .jobs .job {
+body .projects .pipeline .jobs-heading {
+  width: 100%;
+  font-size: 30px;
+  margin: 10px 0px;
+  padding: 10px 0px;
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+}
+
+body .projects .pipeline .jobs .job {
   -webkit-box-flex: 1;
       -ms-flex: 1 1 auto;
           flex: 1 1 auto;
 }
 
-.projects .pipeline .jobs .job-name {
+body .projects .pipeline .jobs .job-name {
   margin: 5px;
-  font-family: fantasy;
-  text-transform: capitalize;
 }
 
-li .title {
+body li .title {
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
@@ -98,7 +115,7 @@ li .title {
   padding-top: 10px;
 }
 
-li .controls {
+body li .controls {
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
@@ -108,41 +125,41 @@ li .controls {
   padding: 50px;
 }
 
-a {
+body a {
   text-decoration: none;
   cursor: default;
   color: #3777b0;
 }
 
-.success-bg {
+body .success-bg {
   background: #33a260;
 }
 
-.failed-bg {
+body .failed-bg {
   background: #d31a48;
 }
 
-.running-bg {
+body .running-bg {
   background: #1a97d5;
 }
 
-.skipped-bg {
+body .skipped-bg {
   background: #3d3d3d;
 }
 
-.success-fg {
+body .success-fg {
   color: #33a260;
 }
 
-.failed-fg {
+body .failed-fg {
   color: #d31a48;
 }
 
-.running-fg {
+body .running-fg {
   color: #1a97d5;
 }
 
-.skipped-fg {
+body .skipped-fg {
   color: #3d3d3d;
 }
 /*# sourceMappingURL=dashboard.css.map */
