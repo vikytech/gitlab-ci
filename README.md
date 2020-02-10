@@ -55,4 +55,3 @@ Enjoy the application !!!
 ## TODO
 - Convert current application to chrome extension
 - Able to configure project/pipelines/jobs dynamically from the application
-- Show open MR count
