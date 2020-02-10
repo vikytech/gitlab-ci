@@ -17,12 +17,13 @@
       -ms-flex-flow: column nowrap;
           flex-flow: column nowrap;
   width: 350px;
-  height: 200px;
   border: 1px solid black;
 }
 
 .projects .pipeline-status {
   min-height: 40px;
+  font-size: 30px;
+  text-align: center;
 }
 
 .projects .pipeline .branch {

@@ -7,11 +7,12 @@
     display: flex;
     flex-flow: column nowrap;
     width: 350px;
-    height: 200px;
     border: 1px solid black;
 
     &-status {
       min-height: 40px;
+      font-size: 30px;
+      text-align: center;
     }
 
     .branch {

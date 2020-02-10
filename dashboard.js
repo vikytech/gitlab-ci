@@ -1,12 +1,17 @@
+var projects;
+var userInfo;
+
 var getProjectInfo = () => {
-  return $.getJSON("http://localhost:3000/projects.json", function(projects) {
-    projects;
+  return $.getJSON("http://localhost:3000/projects.json", function(projectsResponse) {
+    projects = projectsResponse.projects;
+    return projectsResponse;
   });
 };
 
 var getUserInfo = () => {
   return $.getJSON("http://localhost:3000/user_info.json", function(user) {
-    user;
+    userInfo = user;
+    return user;
   });
 };
 
@@ -44,7 +49,7 @@ var renderJobs = jobs => {
   });
 };
 
-var renderPipeline = pipelineResponse => {
+var renderPipeline = (projectId, pipelineResponse) => {
   _.each(pipelineResponse, project => {
     filtered_project = {
       id: project.id,
@@ -57,7 +62,7 @@ var renderPipeline = pipelineResponse => {
         ' class="pipeline" >' +
         '<div class="pipeline-status ' +
         filtered_project.projectStatus +
-        '-bg"></div>' +
+        '-bg">'+ _.find(projects, {id: projectId}).name +'</div>' +
         '<div class="branch"><span class="branch-name"> #' +
         filtered_project.name +
         "</span></div><div class='jobs'></div>"
@@ -81,7 +86,7 @@ var renderDashboard = (userInfo, projects) => {
       };
 
       jobsCallback = pipelineResponse => {
-        renderPipeline(pipelineResponse);
+        renderPipeline(project.id, pipelineResponse);
         jobs = getInfoFromServer(
           userInfo,
           "projects/" +
@@ -107,9 +112,7 @@ var renderDashboard = (userInfo, projects) => {
 $(document).ready(() => {
   $.when(getUserInfo(), getProjectInfo()).then((userInfo, repositories) => {
     _.each(repositories[0], repo => {
-      setInterval(() => {
         renderDashboard(userInfo[0], repo);
-        }, 60000);
       });
     });
 });

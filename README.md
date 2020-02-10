@@ -12,6 +12,7 @@
   "projects": [
       {
         "id": "<PROJECT-ID-1>",
+        "name": "<Custom/PROJECT-NAME>",
         "branches": ["master", "branch1"]
     },
     {
