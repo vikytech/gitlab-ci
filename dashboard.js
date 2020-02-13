@@ -77,7 +77,8 @@ var renderPipeline = (projectId, pipelineResponse) => {
   mrParams = {
     state: "opened",
     wip: "no",
-    target_branch: filtered_project.name
+    target_branch: filtered_project.name,
+    per_page: 100
   };
 
   getInfoFromServer(userInfo,
